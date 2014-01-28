@@ -31,6 +31,40 @@
             <scope>test</scope>
         </dependency>
 
+        <!--spring-->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--spring end-->
+
         <!-- log -->
         <dependency>
             <groupId>log4j</groupId>
@@ -70,6 +104,15 @@
             <artifactId>mybatis</artifactId>
             <version>3.2.3</version>
         </dependency>
+
+        <!--sql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.27</version>
+        </dependency>
+        <!--sql end-->
+
         <!-- end data-->
 
 
@@ -93,7 +136,17 @@
             <version>${shiro.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
         <!-- security end-->
 
     </dependencies>
@@ -127,39 +180,39 @@
 
 
     <repositories>
-        <!--<repository>-->
-            <!--<id>central</id>-->
-            <!--<name>central</name>-->
-            <!--<url>http://10.32.34.117:8081/nexus/content/repositories/central/</url>-->
-            <!--<releases>-->
-                <!--<enabled>true</enabled>-->
-            <!--</releases>-->
-            <!--<snapshots>-->
-                <!--<enabled>false</enabled>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
-        <!--<repository>-->
-            <!--<id>nexus local release rep</id>-->
-            <!--<name>nexus local release rep</name>-->
-            <!--<url>http://10.32.34.117:8081/nexus/content/repositories/releases/</url>-->
-            <!--<releases>-->
-                <!--<enabled>true</enabled>-->
-            <!--</releases>-->
-            <!--<snapshots>-->
-                <!--<enabled>false</enabled>-->
-            <!--</snapshots>-->
-        <!--</repository>-->
-        <!--<repository>-->
-            <!--<id>nexus local snapshots rep</id>-->
-            <!--<name>nexus local release rep</name>-->
-            <!--<url>http://10.32.34.117:8081/nexus/content/repositories/snapshots/</url>-->
-            <!--<snapshots>-->
-                <!--<enabled>true</enabled>-->
-            <!--</snapshots>-->
-            <!--<releases>-->
-                <!--<enabled>false</enabled>-->
-            <!--</releases>-->
-        <!--</repository>-->
+        <repository>
+            <id>central</id>
+            <name>central</name>
+            <url>http://10.32.34.117:8081/nexus/content/repositories/central/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>nexus local release rep</id>
+            <name>nexus local release rep</name>
+            <url>http://10.32.34.117:8081/nexus/content/repositories/releases/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>nexus local snapshots rep</id>
+            <name>nexus local release rep</name>
+            <url>http://10.32.34.117:8081/nexus/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
 
 
     </repositories>

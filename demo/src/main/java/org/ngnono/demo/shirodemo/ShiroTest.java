@@ -1,6 +1,7 @@
 package org.ngnono.demo.shirodemo;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.subject.Subject;
@@ -30,9 +31,17 @@ public class ShiroTest {
 
         logger.info("User is authenticated:  " + user.isAuthenticated());
 
-        UsernamePasswordToken token = new UsernamePasswordToken("bjangles", "dance");
+        UsernamePasswordToken token = new UsernamePasswordToken("bjangles", "1dance");
 
-        user.login(token);
+        try {
+            user.login(token);
+        } catch (AuthenticationException ae) {
+            logger.info("UserName or Password error  ");
+        } catch (Exception ex) {
+            logger.error(ex.getMessage(), ex);
+            logger.info("500");
+        }
+
 
         logger.info("User is authenticated:  " + user.isAuthenticated());
     }

@@ -1,4 +1,4 @@
-package org.ngnono.gechu.service.contract;
+package org.ngnono.gechu.core.service.contract;
 
 /**
  * Created by ngnono on 14-1-16.

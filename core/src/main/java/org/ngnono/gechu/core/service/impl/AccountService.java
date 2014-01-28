@@ -1,4 +1,4 @@
-package org.ngnono.gechu.service.impl;
+package org.ngnono.gechu.core.service.impl;
 
 /**
  * Created by ngnono on 14-1-16.

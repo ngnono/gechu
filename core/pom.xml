@@ -10,7 +10,7 @@
     <artifactId>core</artifactId>
     <packaging>jar</packaging>
 
-    <name>service</name>
+    <name>core</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -18,15 +18,10 @@
     </properties>
 
     <dependencies>
-
-        <!--sql-->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.27</version>
+            <groupId>org.sonatype.sisu</groupId>
+            <artifactId>sisu-inject-bean</artifactId>
+            <version>1.4.2</version>
         </dependency>
-        <!--sql end-->
-
-
     </dependencies>
 </project>
