@@ -9,33 +9,28 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.ngnono.gechu.core.entity.PermissionEntity;
 import org.ngnono.gechu.core.entity.RoleEntity;
 import org.ngnono.gechu.core.entity.UserEntity;
-import org.ngnono.gechu.core.repository.impl.AccountRepository;
+import org.ngnono.gechu.core.repository.impl.AccountRepositoryImpl;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.inject.Inject;
 
 
 
 /**
  * Created by ngnono on 14-1-27.
  */
+@Service
 public class GechuRealm extends AuthorizingRealm
         implements
         Realm,
         InitializingBean {
 
-    public AccountRepository getAccountRepository() {
-        return accountRepository;
-    }
-
-    public void setAccountRepository(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
-    }
-
-    private AccountRepository accountRepository;
+    @Autowired
+    private AccountRepositoryImpl accountRepositoryImpl;
 
     @Override
     public String getName() {
@@ -57,7 +52,7 @@ public class GechuRealm extends AuthorizingRealm
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         String username = (String)super.getAvailablePrincipal(principals);
-        UserEntity user = accountRepository.getByUsername(username);
+        UserEntity user = accountRepositoryImpl.getByUsername(username);
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         Set<String> roles = new HashSet<String>();
@@ -99,7 +94,7 @@ public class GechuRealm extends AuthorizingRealm
 
         UsernamePasswordToken upt = (UsernamePasswordToken) token;
         String username = upt.getUsername();
-        UserEntity user = accountRepository.getByUsername(username);
+        UserEntity user = accountRepositoryImpl.getByUsername(username);
 
         if (user == null) {
             throw new AuthenticationException();
@@ -112,6 +107,6 @@ public class GechuRealm extends AuthorizingRealm
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        Assert.notNull(accountRepository);
+        Assert.notNull(accountRepositoryImpl);
     }
 }

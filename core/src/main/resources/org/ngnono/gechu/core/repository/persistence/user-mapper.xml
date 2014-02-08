@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace和定义的Mapper接口对应，并实现其中的方法 -->
-<mapper namespace="org.ngnono.gechu.core.repository.mapper.UserMapper">
+<mapper namespace="org.ngnono.gechu.core.repository.persistence.UserMapper">
 
     <sql id="crtAllColumns">
                         Id,UserName,Password

@@ -1,9 +1,5 @@
-package org.ngnono.gechu.core.repository.mapper;
+package org.ngnono.gechu.core.repository.persistence;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.ngnono.gechu.core.entity.UserEntity;
 
 import java.util.List;
@@ -12,6 +8,7 @@ import java.util.List;
  * Created by ngnono on 14-1-27.
  * 用户Mapper
  */
+
 public interface UserMapper extends BaseMapper {
 
     //@Select("select * from user")

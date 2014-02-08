@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+
+    <settings>
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="defaultExecutorType" value="REUSE"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
     <!-- 别名 -->
     <typeAliases>
         <typeAlias type="org.ngnono.gechu.core.entity.UserEntity" alias="user"/>
         <typeAlias type="org.ngnono.gechu.core.entity.RoleEntity" alias="role"/>
         <typeAlias type="org.ngnono.gechu.core.entity.PermissionEntity" alias="permission"/>
     </typeAliases>
+
 </configuration>

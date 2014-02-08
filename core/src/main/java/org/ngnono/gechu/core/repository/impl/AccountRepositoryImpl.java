@@ -1,20 +1,19 @@
 package org.ngnono.gechu.core.repository.impl;
 
 import org.ngnono.gechu.core.entity.UserEntity;
-import org.ngnono.gechu.core.repository.contract.IAccontRepository;
-import org.ngnono.gechu.core.repository.mapper.UserMapper;
+import org.ngnono.gechu.core.repository.IAccontRepository;
+import org.ngnono.gechu.core.repository.persistence.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by ngnono on 14-1-16.
  */
-public class AccountRepository extends BaseRepository implements IAccontRepository {
+@Repository
+public class AccountRepositoryImpl extends BaseRepository implements IAccontRepository {
 
-    private UserMapper dataContext;
-
-    public AccountRepository(UserMapper dataContext) {
-        this.dataContext = dataContext;
-    }
-
+    @Autowired
+    private UserMapper userMapper;
 
     /**
      * 获取用户
@@ -24,7 +23,8 @@ public class AccountRepository extends BaseRepository implements IAccontReposito
      */
     @Override
     public UserEntity getByUid(int id) {
-        return dataContext.getById(id);
+
+        return userMapper.getById(id);
     }
 
     /**
@@ -35,6 +35,7 @@ public class AccountRepository extends BaseRepository implements IAccontReposito
      */
     @Override
     public UserEntity getByUsername(String username) {
-        return dataContext.getByUsername(username);
+
+        return userMapper.getByUsername(username);
     }
 }

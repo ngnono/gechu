@@ -1,0 +1,6 @@
+<html>
+<body>
+<h1>${model.message}</h1>
+I'm in vm.
+</body>
+</html>

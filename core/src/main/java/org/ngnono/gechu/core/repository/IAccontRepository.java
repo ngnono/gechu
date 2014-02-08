@@ -1,4 +1,4 @@
-package org.ngnono.gechu.core.repository.contract;
+package org.ngnono.gechu.core.repository;
 
 import org.ngnono.gechu.core.entity.UserEntity;
 
