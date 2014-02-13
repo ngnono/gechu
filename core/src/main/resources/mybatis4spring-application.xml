@@ -22,16 +22,16 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <!--mybatis config-->
-        <property name="configLocation" value="classpath:org/ngnono/gechu/core/repository/persistence/mybatis.xml"/>
+        <property name="configLocation" value="classpath:com/ngnono/gechu/core/repository/persistence/mybatis.xml"/>
         <!-- mapper and resultmap-->
         <property name="mapperLocations">
             <list>
-                <value>classpath*:org/ngnono/gechu/core/repository/persistence/*-mapper.xml</value>
-                <value>classpath*:org/ngnono/gechu/core/repository/persistence/*-resultmap.xml</value>
+                <value>classpath*:com/ngnono/gechu/core/repository/persistence/*-mapper.xml</value>
+                <value>classpath*:com/ngnono/gechu/core/repository/persistence/*-resultmap.xml</value>
 
             </list>
         </property>
-        <property name="typeAliasesPackage" value="org.ngnono.gechu.core.entity"/>
+        <property name="typeAliasesPackage" value="com.ngnono.gechu.core.entity"/>
 
     </bean>
 
@@ -46,14 +46,14 @@
 
     <!--mybatis mapper-->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="org.ngnono.gechu.core.repository.persistence"/>
-        <!--<property name="markerInterface" value="org.ngnono.gechu.core.repository.persistence.BaseMapper"/>-->
+        <property name="basePackage" value="com.ngnono.gechu.core.repository.persistence"/>
+        <!--<property name="markerInterface" value="com.ngnono.gechu.core.repository.persistence.BaseMapper"/>-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!--<property name="annotationClass" value="org.springframework.stereotype.Repository"/>-->
     </bean>
 
     <!--<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">-->
-    <!--<property name="mapperInterface" value="org.ngnono.gechu.core.repository.persistence.UserMapper" />-->
+    <!--<property name="mapperInterface" value="com.ngnono.gechu.core.repository.persistence.UserMapper" />-->
     <!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
     <!--</bean>-->
 </beans>
