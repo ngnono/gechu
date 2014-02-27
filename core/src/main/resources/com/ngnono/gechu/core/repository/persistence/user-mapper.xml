@@ -34,44 +34,69 @@
 
 
 
-    <select id="getAll" resultMap="userResultMap">
-        <![CDATA[
+    <!--<select id="getAll" resultMap="userResultMap">-->
+        <!--<![CDATA[-->
 
-        select <include refid="joinAllColumns"/> from <include refid="joinTableName"/>
-        ]]>
-    </select>
+        <!--select <include refid="joinAllColumns"/> from <include refid="joinTableName"/>-->
+        <!--]]>-->
+    <!--</select>-->
+    <!--         select <include refid="joinAllColumns"/> from <include refid="joinTableName"/> where username=#{username}-->
 
     <select id="getByUsername" resultMap="userResultMap">
         <![CDATA[
-        select <include refid="joinAllColumns"/> from <include refid="joinTableName"/> where username=#{username}
+
+
+select
+    a.Id,
+    a.Username,
+    a.Password,
+    c.Id AS Role_Id,
+    c.Name AS Role_Name,
+    f.Id AS Permission_Id,
+    f.Name AS Permission_Name
+from
+    User as a
+        INNER JOIN
+    UserRoleRelation AS b ON a.Id = b.Id
+        INNER JOIN
+    Role AS c ON b.Role_Id = c.Id
+        LEFT join
+    (SELECT
+        e.Id, d.Role_Id, e.Name
+    FROM
+        RolePermissionRelation AS d
+    INNER JOIN Permission AS e ON e.Id = d.Permission_Id) AS f ON c.Id = f.Role_Id
+where
+    a.username = #{username};
+
         ]]>
     </select>
 
-    <select id="getById" resultMap="userResulttMap">
-        <![CDATA[
-        select <include refid="joinAllColumns"/> from <include refid="joinTableName"/> where id=#{id}
-        ]]>
-    </select>
+    <!--<select id="getById" resultMap="userResultMap">-->
+        <!--<![CDATA[-->
+        <!--select <include refid="joinAllColumns"/> from <include refid="joinTableName"/> where id=#{id}-->
+        <!--]]>-->
+    <!--</select>-->
 
 
-    <!-- 自动生成id策略 -->
-    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" keyColumn="Id">
-<![CDATA[
-        insert into <include refid="crtTableName"/> (Username,Password) values(#{username},#{password})
-        ]]>
-    </insert>
+    <!--&lt;!&ndash; 自动生成id策略 &ndash;&gt;-->
+    <!--<insert id="insertUser" useGeneratedKeys="true" keyProperty="id" keyColumn="Id">-->
+<!--<![CDATA[-->
+        <!--insert into <include refid="crtTableName"/> (Username,Password) values(#{username},#{password})-->
+        <!--]]>-->
+    <!--</insert>-->
 
 
-    <update id="updateUser">
-<![CDATA[
-        update <include refid="crtTableName"/> set Username=#{username},Password=#{password} where Id=#{id}
-        ]]>
+    <!--<update id="updateUser">-->
+<!--<![CDATA[-->
+        <!--update <include refid="crtTableName"/> set Username=#{username},Password=#{password} where Id=#{id}-->
+        <!--]]>-->
 
-    </update>
+    <!--</update>-->
 
-    <delete id="destroyUser">
-<![CDATA[
-        delete from <include refid="crtTableName"/> where Id=#{id}
-        ]]>
-    </delete>
+    <!--<delete id="destroyUser">-->
+<!--<![CDATA[-->
+        <!--delete from <include refid="crtTableName"/> where Id=#{id}-->
+        <!--]]>-->
+    <!--</delete>-->
 </mapper>

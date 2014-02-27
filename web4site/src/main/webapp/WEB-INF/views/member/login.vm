@@ -1,6 +1,17 @@
 <html>
 <body>
-<h1>login</h1>
-I'm in vm.
+<h1>登录页面</h1>
+<img alt="" src="/static/img/1.jpg">
+
+<form method="post">
+    用户名:
+    <input type="text" name="username"/>
+
+    <br/>
+    密 &nbsp;&nbsp;码:
+    <input type="password" name="password"/>
+    <br/>
+    <input type="submit" name="button"/>
+</form>
 </body>
 </html>

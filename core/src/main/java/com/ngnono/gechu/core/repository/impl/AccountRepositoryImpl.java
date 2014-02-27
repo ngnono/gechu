@@ -15,17 +15,17 @@ public class AccountRepositoryImpl extends BaseRepository implements IAccontRepo
     @Autowired
     private UserMapper userMapper;
 
-    /**
-     * 获取用户
-     *
-     * @param id 用户ID
-     * @return 用户实体
-     */
-    @Override
-    public UserEntity getByUid(int id) {
-
-        return userMapper.getById(id);
-    }
+//    /**
+//     * 获取用户
+//     *
+//     * @param id 用户ID
+//     * @return 用户实体
+//     */
+//    @Override
+//    public UserEntity getByUid(int id) {
+//
+//        return userMapper.getById(id);
+//    }
 
     /**
      * 获取用户

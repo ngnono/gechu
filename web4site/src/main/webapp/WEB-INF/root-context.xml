@@ -7,6 +7,7 @@
     <context:property-placeholder location="classpath*:*.properties"/>
 
 
-    <import resource="classpath*:/*-application.xml" />
-    <import resource="spring-shiro.xml" />
+    <import resource="classpath*:/*-application.xml"/>
+    <import resource="spring-shiro.xml"/>
+    <import resource="mongo-context.xml"/>
 </beans>

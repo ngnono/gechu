@@ -14,7 +14,7 @@
 
     <bean id="dataSourceProxy"
           class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
-        <constructor-arg ref="dataSource"></constructor-arg>
+        <constructor-arg ref="dataSource"/>
     </bean>
 
 

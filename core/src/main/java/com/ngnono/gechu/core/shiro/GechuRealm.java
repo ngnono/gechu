@@ -1,15 +1,15 @@
 package com.ngnono.gechu.core.shiro;
 
+import com.ngnono.gechu.core.entity.PermissionEntity;
+import com.ngnono.gechu.core.entity.RoleEntity;
+import com.ngnono.gechu.core.entity.UserEntity;
+import com.ngnono.gechu.core.repository.impl.AccountRepositoryImpl;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.PrincipalCollection;
-import com.ngnono.gechu.core.entity.PermissionEntity;
-import com.ngnono.gechu.core.entity.RoleEntity;
-import com.ngnono.gechu.core.entity.UserEntity;
-import com.ngnono.gechu.core.repository.impl.AccountRepositoryImpl;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,6 @@ import org.springframework.util.Assert;
 
 import java.util.HashSet;
 import java.util.Set;
-
 
 
 /**
@@ -52,7 +51,7 @@ public class GechuRealm extends AuthorizingRealm
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        String username = (String)super.getAvailablePrincipal(principals);
+        String username = (String) super.getAvailablePrincipal(principals);
         UserEntity user = accountRepositoryImpl.getByUsername(username);
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
@@ -87,7 +86,7 @@ public class GechuRealm extends AuthorizingRealm
      * authentication ONLY if the lookup is successful (i.e. account exists and is valid, etc.)
      * @throws org.apache.shiro.authc.AuthenticationException if there is an error acquiring data or performing
      *                                                        realm-specific authentication logic for the specified <tt>token</tt>
-     * 检索认证数据
+     *                                                        检索认证数据
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -95,15 +94,21 @@ public class GechuRealm extends AuthorizingRealm
 
         UsernamePasswordToken upt = (UsernamePasswordToken) token;
         String username = upt.getUsername();
+        String password = new String(upt.getPassword());
         UserEntity user = accountRepositoryImpl.getByUsername(username);
 
         if (user == null) {
             throw new AuthenticationException();
         }
 
-        info = new SimpleAuthenticationInfo(user.getUserName(), user.getPassword(), getName());
+        //password auth
+        if (user.getPassword().equals(password)) {
+            info = new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), getName());
 
-        return info;
+            return info;
+        } else {
+            throw new AuthenticationException();
+        }
     }
 
     @Override

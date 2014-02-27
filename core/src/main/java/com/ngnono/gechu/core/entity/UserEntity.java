@@ -8,28 +8,22 @@ import java.util.List;
 public class UserEntity extends StdBaseEntity {
 
     private int Id;
-    private String userName;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    private String username;
     private String password;
 
     /**
      * roles
      */
     private List<RoleEntity> roles;
-
-    public UserEntity(String userName, String password, int id) {
-        this.userName = userName;
-        this.password = password;
-        Id = id;
-    }
-
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
     public String getPassword() {
         return password;
